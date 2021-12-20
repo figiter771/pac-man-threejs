@@ -32,11 +32,11 @@ function App() {
       }, 1000 / 60);
     }
 
-    let onWindowResize = function () {
+    function onWindowResize() {
       CAMERA.aspect = window.innerWidth / window.innerHeight;
       CAMERA.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-    };
+    }
 
     window.addEventListener("resize", onWindowResize, false);
 
