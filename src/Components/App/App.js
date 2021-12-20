@@ -12,7 +12,6 @@ function App() {
   useEffect(() => {
     var scene = new THREE.Scene();
 
-    var camera = CAMERA;
     var renderer = new THREE.WebGLRenderer();
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -24,12 +23,14 @@ function App() {
     scene.add(SUN);
     scene.add(SUN.target);
 
-    var animate = function () {
-      requestAnimationFrame(animate);
-      CUBE.rotation.x += 0.01;
-      CUBE.rotation.y += 0.01;
-      renderer.render(scene, CAMERA);
-    };
+    function animate() {
+      setTimeout(() => {
+        requestAnimationFrame(animate);
+        CUBE.rotation.x += 0.01;
+        CUBE.rotation.y += 0.01;
+        renderer.render(scene, CAMERA);
+      }, 1000 / 60);
+    }
 
     let onWindowResize = function () {
       CAMERA.aspect = window.innerWidth / window.innerHeight;
