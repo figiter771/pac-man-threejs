@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import CAMERA from "../Cameras/Camera";
 import cube from "../Geometry/Cube";
 import plane from "../Geometry/Plane";
 import sun from "../Lights/Sun";
@@ -9,12 +10,13 @@ function App() {
 
   useEffect(() => {
     var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
+    // var camera = new THREE.PerspectiveCamera(
+    //   75,
+    //   window.innerWidth / window.innerHeight,
+    //   0.1,
+    //   1000
+    // );
+    var camera = CAMERA;
     var renderer = new THREE.WebGLRenderer();
 
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -26,8 +28,7 @@ function App() {
     scene.add(sun);
     scene.add(sun.target);
 
-    // camera.position.z = 6;
-    camera.position.set(0, 1, 6);
+    // camera.position.set(0, 1, 6);
 
     var animate = function () {
       requestAnimationFrame(animate);
