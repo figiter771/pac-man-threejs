@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import CAMERA from "../Cameras/Camera";
+import CUBE from "../Geometry/Cube";
 import cube from "../Geometry/Cube";
-import plane from "../Geometry/Plane";
-import sun from "../Lights/Sun";
+import PLANE from "../Geometry/Plane";
+import SUN from "../Lights/Sun";
 
 function App() {
   const mountRef = useRef(null);
@@ -17,24 +18,22 @@ function App() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    scene.add(plane);
-    scene.add(cube);
+    scene.add(PLANE);
+    scene.add(CUBE);
 
-    scene.add(sun);
-    scene.add(sun.target);
-
-    // camera.position.set(0, 1, 6);
+    scene.add(SUN);
+    scene.add(SUN.target);
 
     var animate = function () {
       requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
-      renderer.render(scene, camera);
+      CUBE.rotation.x += 0.01;
+      CUBE.rotation.y += 0.01;
+      renderer.render(scene, CAMERA);
     };
 
     let onWindowResize = function () {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
+      CAMERA.aspect = window.innerWidth / window.innerHeight;
+      CAMERA.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
