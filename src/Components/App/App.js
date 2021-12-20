@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import CAMERA from "../Cameras/Camera";
 import CUBE from "../Geometry/Cube";
-import cube from "../Geometry/Cube";
 import PLANE from "../Geometry/Plane";
 import SUN from "../Lights/Sun";
 
